@@ -5,23 +5,18 @@
          
          public float dampTime, threshX, threshY;
          private Vector3 newPos, tempPos;
-         public GameObject player;
+         public Transform playerTransform;
      	
          // Update is called once per frame
          void Start (){
             threshX = 0.5f;
-         	player = GameObject.Find("Player");
+         	playerTransform = GameObject.Find("Player").transform;
          }
 
          void Update () 
          {
-            newPos = player.transform.position;
-            tempPos = transform.position;
-            if (newPos.x > tempPos.x + threshX){
-                tempPos.x = Mathf.Lerp(transform.position.x, newPos.x, 0.75f);
-            }
-            tempPos.y = Mathf.Lerp(transform.position.y, newPos.y, 0.75f);
-            transform.position = tempPos;
+            transform.position = new Vector3(playerTransform.position.x,playerTransform.position.y, -100f);
+
         }
     }
 
